@@ -79,15 +79,14 @@ button {
         0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
-.container {
-    padding: 0 16px;
-}
+
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
+    max-height: 56px;
+    padding: 0 16px;
 }
 
 .nav-list, .contacts {
@@ -116,12 +115,9 @@ button {
 .burger-btn {
     padding: 0;
     display: flex;
-    padding: 16px;
     background-color: transparent;
     border: none;
     background-color: transparent;
-    align-content: center;
-    justify-content: center;
 
 }
 
@@ -410,6 +406,7 @@ button {
     line-height: 1.11;
     letter-spacing: 0.02em;
     color: #ffffff;
+    text-align: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -769,6 +766,18 @@ button {
     content: none;
 }
 
+@media screen and (min-width: 768px) {
+    .portfolio-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 24px;
+        row-gap: 72px;
+    }
+
+    .portfolio-item {
+        width: calc((100% - 24px) / 2);
+    }
+}
 
 @media screen and (min-width: 1158px) {
     .portfolio-list {
@@ -829,6 +838,7 @@ button {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #f4f4fd;
+    font-weight: 400;
 }
 
 .footer-social {
@@ -842,6 +852,7 @@ button {
     line-height: 1.5;
     letter-spacing: 0.02em;
     color: #ffffff;
+    text-align: left;
 }
 
 .footer-social-list {
@@ -879,6 +890,9 @@ button {
 .footer-subscribe {
     width: 100%;
     text-align: center;
+    max-width: 453px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .footer-subscribe-title {
@@ -898,7 +912,7 @@ button {
 }
 
 .subscribe-input {
-    width: 264px;
+    width: 288px;
     height: 40px;
     border: 1px solid #ffffff;
     background-color: transparent;
@@ -927,11 +941,16 @@ button {
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.subscribe-icon {
+.icon-sent {
     fill: #ffffff;
 }
 
 @media screen and (min-width: 768px) {
+    .footer{
+        padding: 108px 0 72px;
+    }
+    
+    
     .footer-container {
         flex-direction: row;
         flex-wrap: wrap;
@@ -939,24 +958,28 @@ button {
         align-items: baseline;
         column-gap: 24px;
         row-gap: 72px;
+        max-width: 552px;
+        margin-left: auto;
+        margin-right: 0 auto;
     }
 
-    .footer-left{
-        text-align: left;
-    }
-
-    .footer-social {
+    .footer-left,
+    .footer-socia{
+        width: calc(100%-24px)/2;
         text-align: left;
     }
 
     .footer-subscribe {
+        width: 100%;
         text-align: left;
+        max-width: none;
     }
 
     .subscribe-form {
         flex-direction: row;
         align-items: center;
         gap: 24px;
+        justify-content: flex-start;
     }
 
     .subscribe-input {
@@ -970,8 +993,13 @@ button {
     }
 
     .footer-container {
+        display: flex;
+        align-items: flex-start;
+        max-width: 1158px;
         flex-wrap: nowrap;
         gap:0;
+        margin-left: auto;
+        margin-right: auto;
     }
     .footer-left {
         margin-right: 120px;
@@ -979,6 +1007,10 @@ button {
 
     .footer-social {
         margin-right: 80px;
+    }
+
+    .footer-subscribe {
+        margin-left: 0;
     }
 }
 
@@ -1021,12 +1053,13 @@ button {
         0px 1px 3px 0 rgba(0, 0, 0, 0.12),
         0px 2px 1px 0 rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    padding: 72px 16px 24px;
+    padding: 72px 24px 24px;
     transform: translate(-50%, -50%);
 
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     flex-shrink: 0;
+
 }
 
 @media screen and (min-width: 768px) {
@@ -1175,31 +1208,28 @@ button {
 
 .modal-checkbox-label {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    align-items: flex-start;
     gap: 8px;
-    width: 256px;
-    flex-wrap: wrap;
-    row-gap: 4px;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: #8e8f99;
+    cursor: pointer;
+    padding-top: 2px;
 }
 
-.modal-checkbox-text {
+.modal-checkbox-line {
     display: block;
-    line-height: 1.17;
+    line-height: 1.33;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #8e8f99;
 }
 
 .privacy-link {
     display: inline;
     white-space: normal;
-    font-weight: 500;
+    font-weight: 400;
     color: #4d5ae5;
+
     text-decoration: underline;
     text-underline-offset: 2px;
-    margin-left: 23px;
 }
 
 .modal-own-checkbox {
@@ -1218,6 +1248,7 @@ button {
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
         border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
         fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
 }
 
 .modal-checkbox:checked+.modal-checkbox-label .modal-own-checkbox {
@@ -1247,6 +1278,7 @@ button {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 
 .modal-submit-btn:hover,
